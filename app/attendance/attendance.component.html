@@ -1,0 +1,32 @@
+<ng-template #attendanceModal>
+  <div class="dialog-header">
+    <h2 class="dialog-title">Attendance Registration</h2>
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <div class="container">
+      <form [formGroup]="attendanceForm">
+        <br>
+        <div class="form-group">
+          <button type="button" class="form-control btn-success"
+                  (click)="toggleButtonState('signIn')" 
+                  [disabled]="attendanceForm.get('signIn')?.disabled">
+            Sign In
+          </button>
+        </div>
+        <div class="form-group">
+          <button type="button" class="form-control btn-danger"
+                  (click)="toggleButtonState('signOut')" 
+                  [disabled]="attendanceForm.get('signOut')?.disabled">
+            Sign Out
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close class="close-button">Close</button>
+  </mat-dialog-actions>
+</ng-template>

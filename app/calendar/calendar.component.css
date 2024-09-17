@@ -1,0 +1,40 @@
+/* calendar.component.css */
+
+/* Custom class for extra-large modal size */
+.custom-modal-size {
+  max-width: 90vw; /* Adjust to fit larger screens */
+  width: 90%; /* Adjust width to fit smaller screens */
+}
+
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.75rem auto; /* Center modal vertically */
+}
+
+.modal-content {
+  border-radius: 10px; /* Rounded corners */
+}
+
+.modal-header {
+  background-color: #f8f9fa; /* Light gray background for header */
+  border-bottom: 1px solid #dee2e6; /* Border below header */
+}
+
+.modal-title {
+  font-size: 1.6rem; /* Larger font size for title */
+  font-weight: bold; /* Bold title */
+}
+
+.modal-body {
+  font-size: 1.2rem; /* Slightly larger font size for body text */
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6; /* Border above footer */
+}
+
+.btn-secondary {
+  font-size: 1.1rem; /* Font size for buttons */
+}

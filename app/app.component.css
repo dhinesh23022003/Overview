@@ -1,0 +1,70 @@
+/* Toolbar Custom Styles */
+.custom-toolbar {
+    background-color: #6678e3; /* Use a consistent primary color */
+    color: white;
+  }
+  
+  .toolbar-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 16px;
+  }
+  
+  /* Sidenav Custom Styles */
+  .sidenav-container {
+    height: 100vh;
+  }
+  
+  .custom-sidenav {
+    background-color: #c4ccf9; /* Darker shade of primary color for sidenav */
+    color: white;
+  }
+  
+  .mat-nav-list .mat-list-item {
+    color: white;
+    font-weight: 500;
+  }
+  
+  .mat-nav-list .mat-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+  }
+  
+  .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15); /* Subtle active link */
+    border-left: 3px solid #566ada; /* Border matches toolbar color */
+  }
+  
+  .mat-icon-button {
+    color: white;
+  }
+  
+  /* Content area styling */
+  .mat-sidenav-content {
+    background-color: #f8f9fa; /* Light gray background for content */
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+
+  /* Aligning toolbar content */
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .custom-toolbar {
+    background-color: #8d9beb;
+    color: white;
+  }
+  
+  .toolbar-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 16px;
+  }
+  
+  button[mat-icon-button] {
+    margin-left: auto;
+    color: white;
+  }
+  
+  

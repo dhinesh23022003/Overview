@@ -1,0 +1,37 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div *ngFor="let field of config?.fields">
+      <ng-container [ngSwitch]="field.type">
+        <div *ngSwitchCase="'text'" class="form-group">
+          <label>{{ field.label }}</label>
+          <input
+            type="text"
+            [formControlName]="field.name"
+            [placeholder]="field.placeholder"
+            class="form-control"
+          />          
+        </div>
+        <div *ngSwitchCase="'number'" class="form-group">
+          <label>{{ field.label }}</label>
+          <input
+            type="number"
+            [formControlName]="field.name"
+            class="form-control"
+          />
+        </div>
+        <div *ngSwitchCase="'dropdown'" class="form-group">
+          <label>{{ field.label }}</label>
+          <select [formControlName]="field.name" class="form-control">
+            <option *ngFor="let option of field.options" [value]="option.key">
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-group mt-4">
+      <button type="submit" class="btn btn-primary">{{ config.buttonSetting.buttons[0].caption }}</button>
+      <button type="reset" class="btn btn-warning">{{ config.buttonSetting.buttons[1].caption }}</button>
+      <button type="button" class="btn btn-light" (click)="onCancel()">{{ config.buttonSetting.buttons[2].caption }}</button>
+    </div>
+  </form>
+  

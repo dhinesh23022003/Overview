@@ -1,0 +1,14 @@
+<div class="form-container">
+    <div class="card">
+      <div class="card-header">Dynamic Form</div>
+      <div class="card-body">
+        <app-dynamic-form-builder
+          [config]="config"
+          [formValue]="formValue"
+          (submit)="submit($event)"
+          (cancel)="cancel()"
+        ></app-dynamic-form-builder>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,10 @@
+.btn-square {
+    width: 30px; /* Set width */
+    height: 30px; /* Set height */
+    padding: 0; /* Remove padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0; /* Ensure square shape */
+  }
+  

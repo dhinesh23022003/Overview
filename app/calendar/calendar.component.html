@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div #calendar></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Template -->
+<ng-template #dateModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Attendance Details {{dateString}} </h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Your Sign In Time: {{ signIn}}</p>
+    <p>Your Sign out Time: {{ signOut}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
