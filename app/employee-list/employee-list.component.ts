@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
-import * as XLSX from 'xlsx';
+import * as XLSX from 'xlsx-js-style';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, FormArray, Validators,AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -223,27 +223,81 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   }
 
   exportdata() {
-    const table = document.getElementById(
-      'employeetablexl'
-    ) as HTMLTableElement;
-
+    const table = document.getElementById("employeetablexl") as HTMLTableElement;
     const tableData = Array.from(table.rows).map((row) =>
       Array.from(row.cells)
         .map((cell) => cell.innerText)
-        .filter((_, index, array) => index !== 1 && index !== array.length - 1)
+        .slice(0, -1)
     );
+    
+    const finalData = [
+      ["General Details", "", "", "Personal Details", "", "",""],
+      [
+        "Employee ID",
+        "First Name",
+        "Last Name",
+        "Email",
+        "Mobile Number",
+        "Date Of Birth",
+        "Gender"
+      ],
+      ...tableData.slice(2),
+    ];
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(finalData);
+    ws["!merges"] = [
+      { s: { r: 0, c: 0 }, e: { r: 0, c: 2 } },
+      { s: { r: 0, c: 3 }, e: { r: 0, c: 6 } },
+    ];
+    
+    ws['!cols'] = [
+      { wch: 20 }, 
+      { wch: 20 }, 
+      { wch: 20 }, 
+      { wch: 30 }, 
+      { wch: 20 },
+      { wch: 20 },
+      { wch: 20 }
 
-    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(tableData);
+    ];
+
+    this.applyHeaderStyles(ws);
+
 
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    XLSX.writeFile(wb, 'EmployeeList.xlsx');
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, "EmployeeList.xlsx");
   }
+
+  applyHeaderStyles(ws: XLSX.WorkSheet) {
+
+    const boldStyle = {
+      font: { bold: true }, 
+      alignment: { horizontal: "center" },
+      fill: { fgColor: { rgb: "D9EAD3" } }, 
+      border: {
+        top: { style: "thick", color: { rgb: "000000" } },
+        bottom: { style: "thick", color: { rgb: "000000" } },
+        left: { style: "thick", color: { rgb: "000000" } },
+        right: { style: "thick", color: { rgb: "000000" } },
+      }
+    };
+
+    const headerCells = [
+      "A1", "B1", "C1", "D1", "E1", "F1", 
+      "A2", "B2", "C2", "D2", "E2", "F2", "G2"
+    ];
+
+    headerCells.forEach((cell) => {
+      if (ws[cell]) {
+        ws[cell].s = boldStyle;
+      }
+    });
+  }
+
 
   UploadFIleFormat() {
     const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
-      ['EmployeeID', 'FirstName', 'LastName', 'Email','Mobile Number',"Date of Birth"],
+      ['EmployeeID', 'FirstName', 'LastName', 'Email','Mobile Number',"Date of Birth","Gender"],
     ]);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');

@@ -26,6 +26,7 @@ import { DynamicFormBuilderComponent } from './dynamic-form-builder/dynamic-form
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { DynamicTableTemplateComponent } from './dynamic-table-template/dynamic-table-template.component';
 import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
+import { MultiheaderTableComponent } from './multiheader-table/multiheader-table.component';
 
 
 
@@ -38,7 +39,8 @@ import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
     DynamicFormBuilderComponent,
     DynamicFormComponent,
     DynamicTableTemplateComponent,
-    DynamicTableComponent
+    DynamicTableComponent,
+    MultiheaderTableComponent
   ],
   imports: [
     FormsModule,
